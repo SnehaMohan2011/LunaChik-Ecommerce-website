@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <style>
+        /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Centering the form */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("asset/a12.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+   
+}
+
+/* Form container */
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    text-align: center;
+}
+
+/* Form Title */
+h2 {
+    margin-bottom: 15px;
+}
+
+/* Input fields */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Button styling */
+.btn {
+    width: 100%;
+    background: #c62477;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #c62477;
+}
+
+/* Toggle text */
+.toggle-text {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.toggle-text span {
+    color: #c62477;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-box">
+            <h2 id="form-title">Login</h2>
+
+            <form id="login-form">
+                <div class="input-group">
+                    <input type="email" id="login-email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="login-password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <p class="toggle-text">Don't have an account? <span id="show-signup">Sign up</span></p>
+            </form>
+
+            <form id="signup-form" style="display: none;">
+                <div class="input-group">
+                    <input type="text" id="signup-name" placeholder="Full Name" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="signup-email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="signup-password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+                <p class="toggle-text">Already have an account? <span id="show-login">Login</span></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const loginForm = document.getElementById("login-form");
+    const signupForm = document.getElementById("signup-form");
+    const formTitle = document.getElementById("form-title");
+
+    document.getElementById("show-signup").addEventListener("click", function() {
+        loginForm.style.display = "none";
+        signupForm.style.display = "block";
+        formTitle.textContent = "Sign Up";
+    });
+
+    document.getElementById("show-login").addEventListener("click", function() {
+        signupForm.style.display = "none";
+        loginForm.style.display = "block";
+        formTitle.textContent = "Login";
+    });
+
+    // Simple login form validation
+    loginForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const email = document.getElementById("login-email").value;
+        const password = document.getElementById("login-password").value;
+
+        if (email.trim() === "" || password.trim() === "") {
+            alert("Please fill in all fields!");
+        } else {
+            alert("Login Successful!");
+        }
+    });
+
+    // Simple signup form validation
+    signupForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const name = document.getElementById("signup-name").value;
+        const email = document.getElementById("signup-email").value;
+        const password = document.getElementById("signup-password").value;
+
+        if (name.trim() === "" || email.trim() === "" || password.trim() === "") {
+            alert("Please fill in all fields!");
+        } else {
+            alert("Signup Successful!");
+        }
+    });
+});
+
+    </script>
+</body>
+</html>
